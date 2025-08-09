@@ -1,0 +1,5 @@
+# 用于单页应用路由：任意路径都回到 index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
