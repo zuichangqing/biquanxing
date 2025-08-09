@@ -88,7 +88,7 @@ export default function Hero() {
                transition={{ duration: 0.6, delay: 0.6 }}
                className="text-center mt-8"
              >
-                <p className="text-gray-400">
+                <p className="text-gray-400 text-3xl">
                   所有的知识点都可以通过ChatGPT搜索
                 </p>
              </motion.div>
