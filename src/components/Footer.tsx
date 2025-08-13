@@ -1,3 +1,5 @@
+import { toast } from "sonner";
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   
@@ -15,20 +17,22 @@ export default function Footer() {
             <p className="text-gray-400 text-sm mb-4 max-w-md">
               专为币圈新手打造的一站式学习平台，从基础概念到高级技巧，助你快速掌握加密货币投资与技术知识。
             </p>
-            <div className="flex space-x-4">
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <i className="fa-brands fa-twitter"></i>
-              </a>
-              <a href="https://t.me" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <i className="fa-brands fa-telegram"></i>
-              </a>
-              <a href="https://discord.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <i className="fa-brands fa-discord"></i>
-              </a>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <i className="fa-brands fa-github"></i>
-              </a>
-            </div>
+             <div className="flex space-x-4">
+               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
+                 <i className="fa-brands fa-twitter"></i>
+               </a>
+               <a href="https://t.me" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
+                 <i className="fa-brands fa-telegram"></i>
+               </a>
+               <a href="https://discord.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
+                 <i className="fa-brands fa-discord"></i>
+               </a>
+               <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
+                 <i className="fa-brands fa-github"></i>
+               </a>
+             </div>
+
+
           </div>
 
           {/* 快速导航 */}
@@ -39,10 +43,10 @@ export default function Footer() {
                 window.location.href = '/#hero';
                 window.scrollTo({top: 0, behavior: 'smooth'});
               }} className="text-gray-400 hover:text-blue-400 transition-colors">首页</button></li>
-              <li><button onClick={() => {
-                window.location.href = '/#modules';
-                window.scrollTo({top: 0, behavior: 'smooth'});
-              }} className="text-gray-400 hover:text-blue-400 transition-colors">学习模块</button></li>
+               <li><button onClick={() => {
+                 window.location.href = '/#modules';
+                 window.scrollTo({top: 0, behavior: 'smooth'});
+               }} className="text-gray-400 hover:text-blue-400 transition-colors">学习点</button></li>
               <li><button onClick={() => {
                 window.location.href = '/#resources';
                 window.scrollTo({top: 0, behavior: 'smooth'});

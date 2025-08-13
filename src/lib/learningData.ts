@@ -360,3 +360,5 @@ export const airdropTypesData: AirdropType[] = [
     platforms: ['Helium', 'io.net', 'NOS']
   }
 ];
+// 按难度排序：入门 -> 中级 -> 高级
+cryptoModulesData.sort((a, b) => a.moduleNumber - b.moduleNumber);

@@ -4,16 +4,36 @@ import CryptoModuleCard from '@/components/LearningPathCard';
 import Footer from '@/components/Footer';
 import { cryptoModulesData, airdropTypesData } from '@/lib/learningData';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Home() {
   const [openCategory, setOpenCategory] = useState<string | null>(null);
+  const [showBackToTop, setShowBackToTop] = useState(false);
+  // 监听滚动事件，控制回到顶部按钮显示/隐藏
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowBackToTop(window.scrollY > 300);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // 回到顶部函数
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   // 分类工具资源数据
   const toolCategories = [
     {
       id: 'data-analysis',
       title: '数据分析 & 区块链信息',
       icon: 'fa-chart-line',
+      description: '提供链上数据监控、行情分析、交易追踪等工具，帮助用户获取加密货币和区块链项目的实时与历史数据。',
       tools: [
         { name: 'Messari', description: '全面加密市场数据分析平台，支持项目研究、代币经济分析、链上数据可视化。', url: 'https://messari.io' },
         { name: 'RootData', description: '加密领域投融资数据库，追踪机构投资、项目融资动态。', url: 'https://www.rootdata.com' },
@@ -35,6 +55,7 @@ export default function Home() {
       id: 'airdrop-platforms',
       title: '空投信息 & 任务平台',
       icon: 'fa-bullseye',
+      description: '聚合各类空投活动、任务奖励信息的平台，让用户发现并参与免费的代币获取活动。',
       tools: [
         { name: 'Airdrops.io', description: '空投信息聚合，追踪各类加密项目空投活动。', url: 'https://airdrops.io' },
         { name: 'Galxe', description: 'Web3 任务与身份平台，支持链上任务与活动奖励。', url: 'https://galxe.com' },
@@ -46,6 +67,7 @@ export default function Home() {
       id: 'dev-tools',
       title: '技术 & 开发工具',
       icon: 'fa-code',
+      description: '提供开发者使用的区块链 SDK、API、合约部署、调试等技术支持工具。',
       tools: [
         { name: 'CryptoZombies', description: 'Solidity 编程游戏化教学平台。', url: 'https://cryptozombies.io' },
         { name: 'Remix Ethereum IDE', description: '智能合约开发与调试工具。', url: 'https://remix.ethereum.org' },
@@ -57,6 +79,7 @@ export default function Home() {
       id: 'depin-projects',
       title: 'DePIN & 硬件项目',
       icon: 'fa-server',
+      description: '去中心化物理基础设施（DePIN）相关项目与硬件设备的信息平台，涉及分布式网络、物联网、节点硬件等。',
       tools: [
         { name: 'Helium', description: '去中心化无线网络代表项目。', url: 'https://helium.com' },
         { name: 'UBI Network', description: 'DePIN 硬件生态，支持闲置算力共享与积分市场。', url: 'https://ubinetwork.ai' },
@@ -66,6 +89,7 @@ export default function Home() {
       id: 'nft-platforms',
       title: 'NFT & 创作平台',
       icon: 'fa-palette',
+      description: '提供 NFT 铸造、交易、展示，以及数字艺术创作的相关平台和工具。',
       tools: [
         { name: 'Mint.fun', description: 'NFT 铸造平台，支持快速创作与上链。', url: 'https://mint.fun' },
         { name: 'Magic Eden', description: '多链 NFT 交易市场。', url: 'https://magiceden.io' },
@@ -77,6 +101,7 @@ export default function Home() {
       id: 'exchange-learning',
       title: '交易所学习 & Dapp 排行',
       icon: 'fa-graduation-cap',
+      description: '提供交易所功能学习、加密交易教学，以及去中心化应用（Dapp）的排行榜与推荐。',
       tools: [
         { name: 'Binance Academy', description: '币安官方学习平台。', url: 'https://academy.binance.com/en' },
         { name: 'OKX 学院', description: 'OKX 官方学习与交易指南。', url: 'https://www.okx.com/academy/zh-cn' },
@@ -87,6 +112,7 @@ export default function Home() {
       id: 'meme-platforms',
       title: '热门 Meme 币发行平台',
       icon: 'fa-rocket',
+      description: '专门为 Meme 币发行、交易提供的工具和平台，便于快速创建与参与热门模因项目。',
       tools: [
         { name: 'Bonk.fun (Solana)', description: 'BONK 社区支持的 Meme 币发行平台，集成 Raydium。', url: 'https://bonk.fun' },
         { name: 'Pump.fun (Solana)', description: 'Solana 链 Meme 币快速发行与交易平台。', url: 'https://pump.fun' },
@@ -98,6 +124,7 @@ export default function Home() {
       id: 'blockchain-explorers',
       title: '区块链浏览器 & 链上工具',
       icon: 'fa-search',
+      description: '区块链浏览器、交易查询、地址监控等基础链上操作工具。',
       tools: [
         { name: 'Blockscout', description: '多链浏览器，支持 EVM 兼容链。', url: 'https://blockscout.com' },
         { name: 'Solscan', description: 'Solana 区块浏览器。', url: 'https://solscan.io' },
@@ -108,6 +135,7 @@ export default function Home() {
       id: 'bot-tools',
       title: 'Bot 工具 & 交易辅助',
       icon: 'fa-robot',
+      description: '用于自动化交易、行情监控、社群管理的机器人工具，以及相关交易辅助功能。',
       tools: [
         { name: 'Debot.ai', description: '去中心化 AI Bot 创建与交易工具。', url: 'https://debot.ai' },
         { name: 'Slerf.tools', description: 'Meme 币链上监控与数据分析工具。', url: 'https://slerf.tools' },
@@ -136,7 +164,7 @@ export default function Home() {
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">币圈学习模块</h2>
+                 <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">知识点</h2>
                 <p className="text-gray-300">
                   从基础到进阶，系统化学习币圈知识，每个模块包含详细知识点和推荐学习资源
                 </p>
@@ -198,6 +226,11 @@ export default function Home() {
                         <i className={`fa-solid fa-chevron-down text-gray-500 transition-transform ${openCategory === category.id ? 'rotate-180' : ''}`}></i>
                       </button>
                       
+                       {/* 分类描述 - 始终可见 */}
+                      <div className="px-4 pb-2">
+                        <p className="text-gray-400 text-sm">{category.description}</p>
+                      </div>
+                      
                       {/* 工具列表 - 展开/折叠动画 */}
                       <motion.div
                         initial={{ maxHeight: 0, opacity: 0 }}
@@ -208,7 +241,7 @@ export default function Home() {
                         transition={{ duration: 0.3, ease: 'easeInOut' }}
                         className="overflow-hidden"
                       >
-                        <div className="px-4 pb-4 pt-2 space-y-2">
+                         <div className="px-4 pb-4 pt-2 space-y-2">
                           {category.tools.map((tool, toolIndex) => (
                             <a
                               key={toolIndex}
@@ -237,43 +270,23 @@ export default function Home() {
         
 
 
-         {/* 基础概念提示 */}
-         <section className="py-16 bg-gradient-to-b from-gray-900 to-gray-800">
-           <div className="container mx-auto px-4 md:px-6">
-             <div className="bg-blue-900/20 border border-blue-900/30 rounded-2xl p-8 max-w-4xl mx-auto">
-               <h3 className="text-2xl font-bold text-white mb-4 flex items-center">
-                 <i className="fa-solid fa-lightbulb text-yellow-400 mr-3"></i>
-                 学习建议
-               </h3>
-              <p className="text-gray-300 mb-6">
-                对于基础概念和专业术语理解，建议首选GPT辅助学习。以下是重点专业词及搜索方式：
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-gray-800/50 rounded-lg p-4 border border-gray-700">
-                  <h4 className="text-blue-400 font-medium mb-2">L1/L2 是什么？</h4>
-                  <p className="text-gray-400 text-sm">GPT搜索：什么是L1（Layer1）和L2（Layer2）？它们的区别和代表项目？</p>
-                </div>
-                <div className="bg-gray-800/50 rounded-lg p-4 border border-gray-700">
-                  <h4 className="text-blue-400 font-medium mb-2">NFT 是什么？</h4>
-                  <p className="text-gray-400 text-sm">GPT搜索：什么是 NFT？它在Web3中有什么作用？</p>
-                </div>
-                <div className="bg-gray-800/50 rounded-lg p-4 border border-gray-700">
-                  <h4 className="text-blue-400 font-medium mb-2">DePIN 是什么？</h4>
-                  <p className="text-gray-400 text-sm">GPT搜索：什么是 DePIN？有哪些代表项目？</p>
-                </div>
-                <div className="bg-gray-800/50 rounded-lg p-4 border border-gray-700">
-                  <h4 className="text-blue-400 font-medium mb-2">Tokenomics</h4>
-                  <p className="text-gray-400 text-sm">GPT搜索：什么是 Tokenomics？如何判断一个项目的经济模型是否健康？</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+
       </main>
 
       
       {/* 页脚 */}
-      <Footer />
-    </div>
+       <Footer />
+       
+       {/* 回到顶部按钮 */}
+       <button
+         onClick={scrollToTop}
+  className={`fixed bottom-6 right-6 p-3 rounded-full bg-blue-600 text-white shadow-lg transition-all duration-300 hover:bg-blue-700 hover:scale-110 focus:outline-none z-50 ${
+    showBackToTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'
+  }`}
+         aria-label="回到顶部"
+       >
+         <i className="fa-solid fa-arrow-up"></i>
+       </button>
+     </div>
   );
 }

@@ -52,7 +52,7 @@ export default function CryptoModuleCard({ module }: CryptoModuleCardProps) {
 
   return (
     <motion.div
-      className="group bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-700 hover:border-blue-900/50"
+      className="group bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-700 hover:border-blue-900/50 flex flex-col h-full"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -66,9 +66,7 @@ export default function CryptoModuleCard({ module }: CryptoModuleCardProps) {
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
         <div className="absolute top-3 left-3 flex gap-2">
-          <span className="bg-gray-900/80 text-white text-xs font-semibold px-2 py-1 rounded-full flex items-center">
-            <i className="fa-solid fa-bookmark mr-1"></i>模块 {module.moduleNumber}
-          </span>
+
           {getDifficultyBadge()}
         </div>
         <div className="absolute top-3 right-3">
@@ -79,7 +77,7 @@ export default function CryptoModuleCard({ module }: CryptoModuleCardProps) {
       </div>
 
       {/* 卡片内容 */}
-      <div className="p-5">
+      <div className="p-5 flex-grow flex flex-col">
         <div className="flex justify-between items-start mb-3">
           <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors flex items-center">
             {getCategoryIcon()}
@@ -133,15 +131,17 @@ export default function CryptoModuleCard({ module }: CryptoModuleCardProps) {
         </div>
 
         {/* 进入学习按钮 */}
-         <button 
-           className="w-full py-2 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all text-sm font-medium flex items-center justify-center"
-           onClick={() => {
-             navigate(`/module/${module.id}`);
-           }}
-         >
-           开始学习
-           <i className="fa-solid fa-arrow-right ml-1"></i>
-         </button>
+           <div className="mt-auto pt-4">
+           <button 
+  className="w-3/4 mx-auto py-3 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all text-sm font-medium flex items-center justify-center"
+  onClick={() => {
+    navigate(`/module/${module.id}`);
+  }}
+>
+  开始学习
+  <i className="fa-solid fa-arrow-right ml-1"></i>
+</button>
+           </div>
       </div>
     </motion.div>
   );

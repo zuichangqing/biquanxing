@@ -4,9 +4,16 @@ import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
+import { useEffect } from 'react';
+
 export default function ModuleDetail() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  
+  // 页面加载或模块ID变化时滚动到顶部
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
   
   // 查找当前模块数据
   const module = cryptoModulesData.find(item => item.id === id);
@@ -356,16 +363,7 @@ export default function ModuleDetail() {
       <Navbar />
       
       <main className="flex-grow">
-        {/* 返回按钮 */}
-        <div className="container mx-auto px-4 py-6">
-          <button 
-            onClick={() => navigate('/')}
-            className="flex items-center text-gray-400 hover:text-white transition-colors"
-          >
-            <i className="fa-solid fa-arrow-left mr-2"></i>
-            返回模块列表
-          </button>
-        </div>
+
         
         {/* 模块头部 */}
         <section className="relative py-16 overflow-hidden bg-gray-900">
@@ -383,8 +381,7 @@ export default function ModuleDetail() {
                   {getCategoryInfo()}
                   <div>
                     <div className="flex items-center gap-3 mb-2">
-                      <h1 className="text-3xl md:text-4xl font-bold text-white">{module.title}</h1>
-                      <span className="bg-gray-800 text-gray-300 text-sm px-3 py-1 rounded-full">模块 {module.moduleNumber}</span>
+                     <h1 className="text-3xl md:text-4xl font-bold text-white">{module.title}</h1>
                     </div>
                     <div className="flex items-center gap-3">
                       {difficultyInfo.badge}
@@ -425,7 +422,7 @@ export default function ModuleDetail() {
               >
                 <h2 className="text-2xl font-bold text-white mb-4 flex items-center">
                   <i className="fa-solid fa-info-circle text-blue-400 mr-2"></i>
-                  模块介绍
+板块介绍
                 </h2>
                 <div className="bg-gray-900 rounded-xl p-6 border border-gray-700">
                   <p className="text-gray-300 leading-relaxed">
@@ -541,7 +538,7 @@ export default function ModuleDetail() {
                     className="flex items-center gap-2 px-5 py-2.5 bg-gray-800 hover:bg-gray-750 text-white rounded-lg transition-colors"
                   >
                     <i className="fa-solid fa-arrow-left"></i>
-                    <span>上一模块</span>
+                     <span>上一板块</span>
                   </button>
                 ) : (
                   <div className="w-32"></div> // 占位元素保持居中
@@ -551,7 +548,7 @@ export default function ModuleDetail() {
                   onClick={() => navigate('/')}
                   className="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
                 >
-                  返回模块列表
+             返回列表
                 </button>
                 
                 {module.moduleNumber < cryptoModulesData.length ? (
@@ -562,7 +559,7 @@ export default function ModuleDetail() {
                     }}
                     className="flex items-center gap-2 px-5 py-2.5 bg-gray-800 hover:bg-gray-750 text-white rounded-lg transition-colors"
                   >
-                    <span>下一模块</span>
+                     <span>下一板块</span>
                     <i className="fa-solid fa-arrow-right"></i>
                   </button>
                 ) : (

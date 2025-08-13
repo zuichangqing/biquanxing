@@ -19,10 +19,10 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
-               币圈萌新之旅<br />从入门到精通
-            </h1>
-            <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+  <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6 bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
+  币圈萌新之旅<br className="md:hidden" />从入门到精通
+</h1>
+             <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-4xl mx-auto">
               专为币圈新手打造的系统化学习平台，从基础概念到高级技巧，助你快速掌握加密货币投资与技术知识，开启区块链世界之旅。
             </p>
           </motion.div>
@@ -81,34 +81,34 @@ export default function Hero() {
             </div>
            </motion.div>
              
-             {/* ChatGPT提示区域 */}
-             <motion.div
-               initial={{ opacity: 0, y: 20 }}
-               animate={{ opacity: 1, y: 0 }}
-               transition={{ duration: 0.6, delay: 0.6 }}
-               className="text-center mt-8"
-             >
-                <p className="text-gray-400 text-3xl">
-                  所有的知识点都可以通过ChatGPT搜索
-                </p>
-             </motion.div>
-             
-             {/* 作者链接区域 */}
-             <div 
-               className="absolute bottom-6 right-6 bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-4 rounded-xl shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 transition-all duration-300 transform hover:scale-105 border border-blue-500/50"
-             >
-               <div className="text-white font-bold text-lg mb-2">Intel星</div>
-               <div className="flex gap-4">
-                 <a href="https://x.com/henmiggg" target="_blank" rel="noopener noreferrer" className="flex items-center text-white text-sm hover:underline transition-colors">
-                   <i className="fa-brands fa-twitter mr-1.5"></i>
-                   <span>推特</span>
-                 </a>
-                 <a href="https://t.me/henmigg" target="_blank" rel="noopener noreferrer" className="flex items-center text-white text-sm hover:underline transition-colors">
-                   <i className="fa-brands fa-telegram mr-1.5"></i>
-                   <span>电报</span>
-                 </a>
-               </div>
-             </div>
+              {/* ChatGPT提示区域 */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="text-center mt-8"
+              >
+                 <p className="text-gray-400 text-3xl">
+                   所有的知识点都可以通过ChatGPT搜索
+                 </p>
+              </motion.div>
+              
+              {/* 作者链接区域 */}
+              <div 
+                className="mt-6 flex items-center justify-center bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-2.5 rounded-xl shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 transition-all duration-300 border border-blue-500/50"
+              >
+                <div className="text-white font-bold text-base mr-4">Intel星</div>
+                <div className="flex gap-4">
+                  <a href="https://x.com/henmiggg" target="_blank" rel="noopener noreferrer" className="flex items-center text-white text-sm hover:underline transition-colors">
+                    <i className="fa-brands fa-twitter mr-1.5"></i>
+                    <span>推特</span>
+                  </a>
+                  <a href="https://t.me/henmigg" target="_blank" rel="noopener noreferrer" className="flex items-center text-white text-sm hover:underline transition-colors">
+                    <i className="fa-brands fa-telegram mr-1.5"></i>
+                    <span>电报</span>
+                  </a>
+                </div>
+              </div>
         </div>
       </div>
     </section>
